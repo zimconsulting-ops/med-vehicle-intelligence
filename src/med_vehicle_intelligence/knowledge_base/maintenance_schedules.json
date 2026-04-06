@@ -1,0 +1,89 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-04-06",
+  "source": "MED book Chapter 7, newsletters #8, #9, #22",
+  "intervals": [
+    {
+      "mileage": 5000,
+      "items": [
+        {"service": "Oil and filter change", "priority": "critical", "notes": "Synthetic interval 7,500-10,000 for most modern vehicles. 5K is conservative/safe."},
+        {"service": "Tire rotation", "priority": "recommended", "notes": "Every 5,000-7,500 miles"}
+      ]
+    },
+    {
+      "mileage": 15000,
+      "items": [
+        {"service": "Engine air filter inspection", "priority": "recommended", "notes": "Replace if visibly dirty; typical life 15K-30K"},
+        {"service": "Cabin air filter inspection", "priority": "low", "notes": "Replace if musty smell or reduced airflow; typical life 15K-20K"}
+      ]
+    },
+    {
+      "mileage": 30000,
+      "items": [
+        {"service": "Engine air filter replacement", "priority": "recommended"},
+        {"service": "Cabin air filter replacement", "priority": "recommended"},
+        {"service": "Brake fluid inspection", "priority": "recommended", "notes": "Replace every 2-3 years or if dark/contaminated"},
+        {"service": "Coolant inspection", "priority": "recommended", "notes": "Check level and condition; some vehicles specify 50K-100K intervals"},
+        {"service": "Tire condition and tread depth check", "priority": "critical"}
+      ]
+    },
+    {
+      "mileage": 60000,
+      "items": [
+        {"service": "Spark plug replacement", "priority": "critical", "notes": "Iridium/platinum plugs may go to 100K; check owner's manual"},
+        {"service": "Coolant flush", "priority": "critical", "notes": "Coolant degrades and becomes acidic over time"},
+        {"service": "Transmission fluid change", "priority": "critical", "notes": "Drain and fill, NOT flush. 'Lifetime' fluid often means lifetime of a lease, not the vehicle."},
+        {"service": "Serpentine belt inspection", "priority": "recommended", "notes": "Replace if cracked, frayed, or glazed"},
+        {"service": "Brake fluid flush", "priority": "recommended"}
+      ]
+    },
+    {
+      "mileage": 100000,
+      "items": [
+        {"service": "Timing belt replacement", "priority": "critical", "notes": "If interference engine — failure can destroy the engine. Timing chains have no scheduled interval."},
+        {"service": "Water pump replacement", "priority": "recommended", "notes": "Often replaced with timing belt since labor overlaps"},
+        {"service": "Complete fluid service", "priority": "critical", "notes": "All fluids should be inspected and serviced"},
+        {"service": "Suspension component inspection", "priority": "recommended", "notes": "Struts, shocks, bushings, ball joints"},
+        {"service": "Spark plugs (if not done at 60K)", "priority": "critical"}
+      ]
+    }
+  ],
+  "common_upsells": [
+    {
+      "service": "Fuel injection cleaning",
+      "typical_cost_range": "$150-250",
+      "usually_necessary": false,
+      "notes": "Rarely needed on modern vehicles running quality fuel. Legitimate only if you have specific driveability symptoms."
+    },
+    {
+      "service": "Engine flush",
+      "typical_cost_range": "$100-150",
+      "usually_necessary": false,
+      "notes": "Can cause harm on high-mileage engines by dislodging deposits that were acting as seals. Occasionally useful on genuinely neglected engines."
+    },
+    {
+      "service": "Transmission flush (vs drain-and-fill)",
+      "typical_cost_range": "$200-400",
+      "usually_necessary": false,
+      "notes": "A drain-and-fill is sufficient and safer. A full flush can cause problems on older or high-mileage transmissions."
+    },
+    {
+      "service": "Cabin air filter at every visit",
+      "typical_cost_range": "$30-60 at shop, $10-20 DIY",
+      "usually_necessary": false,
+      "notes": "Lasts 15K-20K miles. Usually behind the glove box — easy to check and replace yourself."
+    },
+    {
+      "service": "Power steering fluid flush",
+      "typical_cost_range": "$100-200",
+      "usually_necessary": false,
+      "notes": "Only relevant for hydraulic power steering. Electric power steering systems have no fluid to flush."
+    },
+    {
+      "service": "Coolant flush at every oil change",
+      "typical_cost_range": "$140-350",
+      "usually_necessary": false,
+      "notes": "Most vehicles need coolant service every 50K-100K miles, not at every oil change."
+    }
+  ]
+}

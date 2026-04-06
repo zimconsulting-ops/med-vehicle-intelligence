@@ -126,13 +126,20 @@ def check_shop_red_flags(description: str) -> str:
 
 def main():
     import os
-    transport = os.environ.get("MCP_TRANSPORT", "stdio")
-    if transport == "sse":
-        port = int(os.environ.get("PORT", "8000"))
+    import sys
+    # Auto-detect transport: use SSE if PORT env var is set (Railway, Render, etc.)
+    # or if MCP_TRANSPORT is explicitly set to sse. Otherwise default to stdio.
+    port_env = os.environ.get("PORT")
+    transport_env = os.environ.get("MCP_TRANSPORT", "").lower()
+
+    if transport_env == "sse" or (transport_env != "stdio" and port_env):
+        port = int(port_env or "8000")
+        print(f"[MED-MCP] Starting SSE server on 0.0.0.0:{port}", file=sys.stderr, flush=True)
         mcp.settings.host = "0.0.0.0"
         mcp.settings.port = port
         mcp.run(transport="sse")
     else:
+        print("[MED-MCP] Starting stdio server", file=sys.stderr, flush=True)
         mcp.run(transport="stdio")
 
 

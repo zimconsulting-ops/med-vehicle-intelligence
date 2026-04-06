@@ -1,8 +1,8 @@
 [build]
 builder = "nixpacks"
+buildCommand = "pip install -e ."
 
 [deploy]
 startCommand = "python -m med_vehicle_intelligence.server"
-
-[variables]
-MCP_TRANSPORT = "sse"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

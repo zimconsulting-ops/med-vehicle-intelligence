@@ -1,0 +1,77 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-04-06",
+  "source": "MED lead magnet — 7 Red Flags at the Shop",
+  "red_flags": [
+    {
+      "id": "phone_diagnosis",
+      "name": "The Phone Diagnosis",
+      "severity": "high",
+      "pattern_keywords": ["quoted over the phone", "phone quote", "price over the phone", "diagnosed over the phone", "told me the price before", "gave me a price without looking", "haven't seen the car", "sight unseen", "over the phone", "quoted me over the phone", "quoted on the phone", "without seeing"],
+      "description": "The shop quoted a price before seeing the vehicle.",
+      "why_problematic": "A responsible shop cannot diagnose a vehicle over the phone. A noise could be a loose heat shield ($50) or a failing wheel bearing ($400+). Anyone who quotes before looking is guessing — or has already decided what they're going to sell you.",
+      "what_to_do": "A good shop will say 'Bring it in and we'll take a look.' If they quote a price before seeing it, call somewhere else."
+    },
+    {
+      "id": "scare_list",
+      "name": "The Scare List",
+      "severity": "moderate",
+      "pattern_keywords": ["long list", "list of things", "bunch of stuff", "6 things wrong", "multiple items", "upsell", "came in for oil change", "additional services", "immediate attention", "all need to be done", "recommended services", "flush", "injection cleaning"],
+      "description": "You came in for one thing and got a long list of additional items that 'need immediate attention.'",
+      "why_problematic": "Upselling maintenance services is how some shops pad the ticket. The timing is designed to catch you off guard — you're already there, you don't want to leave and come back.",
+      "what_to_do": "Ask: 'Which of these is a safety issue and which is maintenance?' Get safety items done. Take the maintenance list home and check it against your owner's manual. You'll often find half the list isn't due yet."
+    },
+    {
+      "id": "open_ended_authorization",
+      "name": "Open-Ended Authorization",
+      "severity": "high",
+      "pattern_keywords": ["won't know until", "get in there", "once we open it up", "can't give a firm", "no firm estimate", "authorize to start", "start tearing it apart", "won't know the cost", "open ended", "blank check"],
+      "description": "The shop can't give a firm estimate and wants authorization to start work before knowing the full cost.",
+      "why_problematic": "Once the car is disassembled, you can't easily take it somewhere else. The final bill tends to grow because you've already committed.",
+      "what_to_do": "Ask for a diagnostic fee upfront ($80-150). A good shop will diagnose, give a firm written estimate, and let you decide. If they won't give a written estimate before starting work, find a shop that will."
+    },
+    {
+      "id": "no_old_parts",
+      "name": "No Old Parts",
+      "severity": "moderate",
+      "pattern_keywords": ["can't show", "threw away", "already disposed", "no old parts", "didn't keep", "won't show", "parts were discarded", "couldn't see the old"],
+      "description": "They replaced parts but can't show you the old ones.",
+      "why_problematic": "Showing old parts is standard practice at honest shops. It proves the work was done and lets you see the wear. A shop that can't produce old parts may not have replaced them.",
+      "what_to_do": "Before authorizing any repair, say: 'I'd like to see the old parts when I pick up.' A legitimate shop will have no problem with this."
+    },
+    {
+      "id": "pressure_close",
+      "name": "The Pressure Close",
+      "severity": "high",
+      "pattern_keywords": ["wouldn't drive", "unsafe to drive", "could fail any time", "dangerous", "you need to do this today", "can't leave", "much bigger repair", "catastrophic", "ticking time bomb", "lawsuit", "liability"],
+      "description": "Fear-based pressure to approve repairs immediately.",
+      "why_problematic": "Genuine safety issues don't require high-pressure tactics. A mechanic who respects you will explain the problem, show you what they found, and let you decide.",
+      "what_to_do": "If someone says the car is unsafe to drive, ask them to show you the problem. Get under the lift with them. Look at the worn part. If they can show it, it's probably real. If they can't or won't, it's probably a scare tactic."
+    },
+    {
+      "id": "mystery_charges",
+      "name": "Mystery Charges",
+      "severity": "moderate",
+      "pattern_keywords": ["shop supplies", "environmental fee", "miscellaneous", "surprise charge", "wasn't on the estimate", "extra charges", "hidden fee", "disposal fee", "added charges", "more than the estimate", "bill was higher"],
+      "description": "Unexplained fees that weren't on the original estimate.",
+      "why_problematic": "Small fees add up and are designed to go unquestioned. Some are legitimate (waste disposal), but they should be disclosed upfront, not added at the register.",
+      "what_to_do": "Before authorizing work, ask: 'Is there anything on the final bill that isn't on this estimate?' If surprise charges appear, question them. You have the right to an itemized invoice that matches the authorized estimate."
+    },
+    {
+      "id": "resists_second_opinion",
+      "name": "Resists Second Opinion",
+      "severity": "high",
+      "pattern_keywords": ["don't go anywhere else", "won't find better", "same thing", "waste of time", "already diagnosed", "paying twice", "other shops", "don't need a second", "discouraged me", "talked me out of", "pressured me to stay"],
+      "description": "The shop discourages you from getting another estimate.",
+      "why_problematic": "A shop that does good work at fair prices has no reason to discourage comparison. The resistance itself is the signal.",
+      "what_to_do": "Say: 'I appreciate the estimate. I'm going to get one more opinion before I decide.' Any shop that respects your right to do that is worth returning to. Any shop that doesn't — isn't."
+    }
+  ],
+  "positive_signals": [
+    {"signal": "Provided written estimate", "keywords": ["written estimate", "estimate in writing", "put it in writing", "gave me a breakdown"]},
+    {"signal": "Showed old parts", "keywords": ["showed me the part", "showed me what was wrong", "let me see", "showed the wear"]},
+    {"signal": "Welcomed second opinion", "keywords": ["take your time", "get another opinion", "no pressure", "think about it", "no rush"]},
+    {"signal": "Separated safety from maintenance", "keywords": ["safety issue", "can wait", "not urgent", "recommended but not required", "up to you"]},
+    {"signal": "Explained the diagnosis", "keywords": ["explained what", "showed me why", "walked me through", "here's what we found", "let me show you"]}
+  ]
+}

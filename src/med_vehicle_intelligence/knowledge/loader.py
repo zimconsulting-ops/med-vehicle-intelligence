@@ -3,7 +3,11 @@
 import json
 from pathlib import Path
 
-KB_DIR = Path(__file__).resolve().parent.parent.parent.parent / "knowledge_base"
+# Knowledge base is bundled inside the package as package data.
+# Falls back to the project root for local dev if not found.
+_PKG_KB = Path(__file__).resolve().parent.parent / "knowledge_base"
+_DEV_KB = Path(__file__).resolve().parent.parent.parent.parent / "knowledge_base"
+KB_DIR = _PKG_KB if _PKG_KB.exists() else _DEV_KB
 
 
 def _load(filename: str) -> dict:
