@@ -5,17 +5,13 @@ Expert car repair and maintenance advisory tools from a 20-year mechanic veteran
 
 from mcp.server.fastmcp import FastMCP
 
-from .config import SERVER_NAME, SERVER_VERSION, SERVER_DESCRIPTION
+from .config import SERVER_NAME
 from .tools.check_estimate import check_estimate
 from .tools.maintenance import maintenance_schedule
 from .tools.repair_replace import repair_or_replace
 from .tools.red_flags import find_red_flags
 
-mcp = FastMCP(
-    SERVER_NAME,
-    version=SERVER_VERSION,
-    description=SERVER_DESCRIPTION,
-)
+mcp = FastMCP(SERVER_NAME)
 
 
 @mcp.tool()
@@ -133,7 +129,9 @@ def main():
     transport = os.environ.get("MCP_TRANSPORT", "stdio")
     if transport == "sse":
         port = int(os.environ.get("PORT", "8000"))
-        mcp.run(transport="sse", host="0.0.0.0", port=port)
+        mcp.settings.host = "0.0.0.0"
+        mcp.settings.port = port
+        mcp.run(transport="sse")
     else:
         mcp.run(transport="stdio")
 
