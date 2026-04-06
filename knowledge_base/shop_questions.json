@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-04-06",
+  "source": "MED book Appendix C + newsletters #1, #11",
+  "contexts": {
+    "before_approving_repair": [
+      "Can you show me what you found, or show me the worn part?",
+      "Is this a manufacturer-recommended service, or your shop's recommendation?",
+      "What does my owner's manual specify for this interval?",
+      "What's the risk of waiting — what happens if I defer this?",
+      "Can I get a written estimate with parts and labor broken out separately?",
+      "Are these OEM parts, aftermarket, or remanufactured — and does that affect the warranty?",
+      "What warranty do you offer on this work?"
+    ],
+    "evaluating_diagnosis": [
+      "How did you determine this is the problem — what test or observation led to this conclusion?",
+      "Could something else be causing this symptom?",
+      "If we fix this, are there other known issues on this vehicle I should be aware of?"
+    ],
+    "evaluating_estimate": [
+      "Can I get parts and labor broken out separately on the estimate?",
+      "Are there any fees not shown on this estimate that will appear on the final bill?",
+      "What quality of parts are you using, and what's the price difference for OEM vs aftermarket?",
+      "Is the diagnostic fee applied toward the repair if I authorize the work?"
+    ],
+    "repair_vs_replace": [
+      "What would you do if this were your car?",
+      "In your honest opinion, is this vehicle worth repairing at this cost?",
+      "Is this repair likely to give the vehicle meaningful additional service life, or are there other issues developing behind it?"
+    ],
+    "after_pickup": [
+      "Can you walk me through what was done and show me where each item appears on the invoice?",
+      "Is there anything you noticed while the vehicle was here that I should watch going forward?",
+      "What should I look for to know the repair was successful?"
+    ]
+  }
+}

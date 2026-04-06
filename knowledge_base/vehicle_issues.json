@@ -1,0 +1,70 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-04-06",
+  "source": "MED vehicle top issues CSV + professional experience",
+  "vehicles": {
+    "toyota_camry": {
+      "make": "Toyota",
+      "model": "Camry",
+      "reliability": "above_average",
+      "known_issues": [
+        {"issue": "Transmission shudder", "years": "2018-2022", "severity": "moderate", "typical_cost": "$300-800 fluid change; $3,000-5,000 torque converter", "notes": "Common complaint in 8-speed models"},
+        {"issue": "Porous engine block coolant leak", "years": "2007-2011", "severity": "high", "typical_cost": "$2,000-4,000", "notes": "2AZ-FE engine, internal coolant leak"},
+        {"issue": "Oxygen sensor failures", "years": "various", "severity": "low", "typical_cost": "$200-500"}
+      ]
+    },
+    "ford_f150": {
+      "make": "Ford",
+      "model": "F-150",
+      "reliability": "average",
+      "known_issues": [
+        {"issue": "Ignition coil/spark plug failure", "years": "various", "severity": "moderate", "typical_cost": "$200-600", "notes": "Spark plug gap issues common"},
+        {"issue": "Spark plug ejection", "years": "1997-2008", "severity": "high", "typical_cost": "$500-1,500", "notes": "5.4L Triton V8 — plugs seize and break"},
+        {"issue": "Differential issues", "years": "various", "severity": "moderate", "typical_cost": "$800-2,000"},
+        {"issue": "Little/no cabin heat", "years": "various", "severity": "low", "typical_cost": "$200-800", "notes": "Often blend door actuator"}
+      ]
+    },
+    "honda_civic": {
+      "make": "Honda",
+      "model": "Civic",
+      "reliability": "above_average",
+      "known_issues": [
+        {"issue": "Airbag warning light (occupant sensor)", "years": "various", "severity": "moderate", "typical_cost": "$300-600"},
+        {"issue": "Engine mount vibration/rattle", "years": "various", "severity": "low", "typical_cost": "$200-500", "notes": "Common at idle, especially with AC on"},
+        {"issue": "Power window switch failures", "years": "various", "severity": "low", "typical_cost": "$100-300"}
+      ]
+    },
+    "chevrolet_silverado": {
+      "make": "Chevrolet",
+      "model": "Silverado",
+      "reliability": "average",
+      "known_issues": [
+        {"issue": "AFM/DFM lifter failure", "years": "2014-2024", "severity": "high", "typical_cost": "$3,000-6,000", "notes": "5.3L V8 — loud tick, misfire, metal in oil. Active Fuel Management related."},
+        {"issue": "Timing chain stretch", "years": "various", "severity": "moderate", "typical_cost": "$1,500-3,500"},
+        {"issue": "Oil pressure warnings", "years": "various", "severity": "moderate", "typical_cost": "$200-1,200", "notes": "Often oil pressure sensor or pump screen"},
+        {"issue": "Transmission shudder", "years": "2015-2020", "severity": "moderate", "typical_cost": "$300-800 fluid change; $3,000-5,000 converter"}
+      ]
+    },
+    "toyota_rav4": {
+      "make": "Toyota",
+      "model": "RAV4",
+      "reliability": "above_average",
+      "known_issues": [
+        {"issue": "EVAP canister issues", "years": "various", "severity": "low", "typical_cost": "$200-500"},
+        {"issue": "False catalytic converter codes", "years": "various", "severity": "low", "typical_cost": "$0-150", "notes": "Software update often resolves; no actual converter failure"},
+        {"issue": "Oxygen sensor", "years": "various", "severity": "low", "typical_cost": "$200-500"}
+      ],
+      "notes": "Overall very reliable — approximately 0.3 unscheduled repairs per year"
+    },
+    "honda_crv": {
+      "make": "Honda",
+      "model": "CR-V",
+      "reliability": "above_average",
+      "known_issues": [
+        {"issue": "AC compressor failure", "years": "2012-2016", "severity": "moderate", "typical_cost": "$900-1,800"},
+        {"issue": "Oil dilution (fuel in oil)", "years": "2017-2019", "severity": "moderate", "typical_cost": "Warranty/TSB", "notes": "1.5T engine in cold climates — fuel contaminates oil on short trips"},
+        {"issue": "Vibration at idle with AC", "years": "various", "severity": "low", "typical_cost": "$200-500", "notes": "Engine mount related"}
+      ]
+    }
+  }
+}
