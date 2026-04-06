@@ -129,7 +129,13 @@ def check_shop_red_flags(description: str) -> str:
 
 
 def main():
-    mcp.run(transport="stdio")
+    import os
+    transport = os.environ.get("MCP_TRANSPORT", "stdio")
+    if transport == "sse":
+        port = int(os.environ.get("PORT", "8000"))
+        mcp.run(transport="sse", host="0.0.0.0", port=port)
+    else:
+        mcp.run(transport="stdio")
 
 
 if __name__ == "__main__":
