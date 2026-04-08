@@ -11,7 +11,11 @@ from .tools.maintenance import maintenance_schedule
 from .tools.repair_replace import repair_or_replace
 from .tools.red_flags import find_red_flags
 
-mcp = FastMCP(SERVER_NAME)
+# Construct with host="0.0.0.0" to skip FastMCP's auto-enabled DNS rebinding
+# protection. That protection only allows Host headers matching localhost variants,
+# which causes Railway-proxied requests to return 421 "Invalid Host header" on /sse.
+# Public deployments need to accept the deployed hostname.
+mcp = FastMCP(SERVER_NAME, host="0.0.0.0")
 
 
 # Static server card — bypasses Smithery auto-scan (which 404s against FastMCP's SSE routes).
