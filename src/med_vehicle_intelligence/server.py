@@ -5,7 +5,7 @@ Expert car repair and maintenance advisory tools from a 20-year mechanic veteran
 
 from mcp.server.fastmcp import FastMCP
 
-from .config import SERVER_NAME, SERVER_VERSION, SERVER_DESCRIPTION
+from .config import SERVER_NAME, SERVER_VERSION, SERVER_DESCRIPTION, SITE_URL
 from .tools.check_estimate import check_estimate
 from .tools.maintenance import maintenance_schedule
 from .tools.repair_replace import repair_or_replace
@@ -20,12 +20,29 @@ mcp = FastMCP(SERVER_NAME, host="0.0.0.0")
 
 # Static server card — bypasses Smithery auto-scan (which 404s against FastMCP's SSE routes).
 # Served at /.well-known/mcp/server-card.json. Update tool list here when tools change.
+#
+# Read-only annotation rationale: All 4 tools query bundled JSON knowledge bases and
+# return advice text. No external API calls, no state mutation, no side effects.
+# readOnlyHint=true + idempotentHint=true + openWorldHint=false + destructiveHint=false
+# is the correct profile for every tool here. This tells Claude Desktop and other MCP
+# clients they can safely run these tools without prompting the user for permission.
+_READ_ONLY_ANNOTATIONS = {
+    "readOnlyHint": True,
+    "destructiveHint": False,
+    "idempotentHint": True,
+    "openWorldHint": False,
+}
+
 SERVER_CARD = {
     "serverInfo": {
         "name": SERVER_NAME,
         "version": SERVER_VERSION,
         "description": SERVER_DESCRIPTION,
     },
+    "displayName": "MED Vehicle Intelligence",
+    "description": SERVER_DESCRIPTION,
+    "homepage": SITE_URL,
+    "icon": "https://web-production-ff80.up.railway.app/icon.svg",
     "authentication": {"required": False},
     "tools": [
         {
@@ -36,6 +53,7 @@ SERVER_CARD = {
                 "dealers. Returns whether the price is in range, high, or low, plus questions "
                 "to ask the shop."
             ),
+            "annotations": {"title": "Check Repair Estimate", **_READ_ONLY_ANNOTATIONS},
             "inputSchema": {
                 "type": "object",
                 "properties": {
@@ -64,6 +82,7 @@ SERVER_CARD = {
                 "Returns what maintenance is due now, what's coming in the next 10,000 miles, "
                 "common upsells to question, and vehicle-specific known issues."
             ),
+            "annotations": {"title": "Get Maintenance Schedule", **_READ_ONLY_ANNOTATIONS},
             "inputSchema": {
                 "type": "object",
                 "properties": {
@@ -83,6 +102,7 @@ SERVER_CARD = {
                 "your current vehicle or start shopping for a replacement. Includes the real "
                 "cost of replacement for comparison."
             ),
+            "annotations": {"title": "Fix or Replace Recommendation", **_READ_ONLY_ANNOTATIONS},
             "inputSchema": {
                 "type": "object",
                 "properties": {
@@ -116,6 +136,7 @@ SERVER_CARD = {
                 "and get an assessment of whether anything seems suspicious. Based on 7 common "
                 "shop red flags from 20 years of automotive industry experience."
             ),
+            "annotations": {"title": "Check Shop Red Flags", **_READ_ONLY_ANNOTATIONS},
             "inputSchema": {
                 "type": "object",
                 "properties": {
@@ -244,16 +265,22 @@ def check_shop_red_flags(description: str) -> str:
 
 
 def _build_http_app():
-    """Wrap FastMCP's SSE app with a static server-card route for Smithery.
+    """Wrap FastMCP's SSE app with static routes for Smithery + health + branding.
 
-    Smithery's auto-scanner probes the deployed URL and 404s because FastMCP
-    only serves /sse and /messages/. Serving /.well-known/mcp/server-card.json
-    bypasses the scan entirely. Also adds a / health endpoint so root probes
-    return 200 instead of 404.
+    - /.well-known/mcp/server-card.json: bypasses Smithery auto-scan (which 404s
+      because FastMCP only serves /sse and /messages/)
+    - /icon.svg: brand icon used by Smithery listing card
+    - /: health endpoint so root probes return 200 instead of 404
+    - Mount /: existing /sse and /messages/ routes pass through to FastMCP
     """
+    from pathlib import Path
+
     from starlette.applications import Starlette
-    from starlette.responses import JSONResponse
+    from starlette.responses import FileResponse, JSONResponse, Response
     from starlette.routing import Mount, Route
+
+    # Icon path resolved relative to repo root (server.py is at src/med_vehicle_intelligence/server.py)
+    icon_path = Path(__file__).resolve().parent.parent.parent / "assets" / "icon.svg"
 
     async def server_card(_request):
         return JSONResponse(SERVER_CARD)
@@ -261,11 +288,17 @@ def _build_http_app():
     async def health(_request):
         return JSONResponse({"status": "ok", "name": SERVER_NAME, "version": SERVER_VERSION})
 
+    async def icon(_request):
+        if icon_path.exists():
+            return FileResponse(icon_path, media_type="image/svg+xml")
+        return Response("icon not found", status_code=404)
+
     sse_app = mcp.sse_app()
 
     return Starlette(
         routes=[
             Route("/.well-known/mcp/server-card.json", server_card),
+            Route("/icon.svg", icon),
             Route("/", health),
             Mount("/", app=sse_app),
         ]

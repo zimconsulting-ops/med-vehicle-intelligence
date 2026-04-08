@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="64" fill="#0D1B2A"/>
+  <text x="256" y="290" font-family="system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="170" font-weight="900" text-anchor="middle" fill="#ffffff" letter-spacing="-2">M·E·<tspan fill="#E8651A">D</tspan></text>
+  <text x="256" y="370" font-family="system-ui, -apple-system, Arial, sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#aaaaaa" letter-spacing="3">MY EVERYDAY DRIVER</text>
+  <rect x="96" y="408" width="320" height="6" rx="3" fill="#E8651A"/>
+</svg>
