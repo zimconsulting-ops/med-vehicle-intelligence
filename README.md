@@ -40,6 +40,10 @@ All data lives in editable JSON files — no hardcoded values:
 
 ## Install
 
+```bash
+pip install med-vehicle-intelligence
+```
+
 ### Claude Desktop
 
 Add to your `claude_desktop_config.json`:
@@ -49,10 +53,16 @@ Add to your `claude_desktop_config.json`:
   "mcpServers": {
     "med-vehicle-intelligence": {
       "command": "python",
-      "args": ["-m", "med_vehicle_intelligence.server"]
+      "args": ["-m", "med_vehicle_intelligence"]
     }
   }
 }
+```
+
+### Via Smithery
+
+```bash
+npx -y @smithery/cli install @zimconsulting-ops/med-vehicle-intelligence --client claude
 ```
 
 ### From source
@@ -63,10 +73,19 @@ cd med-vehicle-intelligence
 pip install -e .
 ```
 
-### Via Smithery
+## Run from terminal
+
+Three equivalent ways to launch the server. The server reads JSON-RPC over stdio — once started, the cursor will sit blank waiting for input. Press `Ctrl+C` to exit.
 
 ```bash
-npx -y @smithery/cli install @zimconsulting-ops/med-vehicle-intelligence --client claude
+# Preferred — entry-point script (works when Python's Scripts folder is on PATH)
+med-vehicle-intelligence
+
+# Package module (works anywhere Python is installed; recommended for Claude Desktop)
+python -m med_vehicle_intelligence
+
+# Server module (explicit submodule path; equivalent to the above)
+python -m med_vehicle_intelligence.server
 ```
 
 ## Requirements

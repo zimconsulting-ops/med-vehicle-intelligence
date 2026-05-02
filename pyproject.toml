@@ -1,6 +1,6 @@
 [project]
 name = "med-vehicle-intelligence"
-version = "1.0.0"
+version = "1.0.1"
 description = "Expert car repair and maintenance advisory MCP tools from a 20-year mechanic veteran"
 requires-python = ">=3.11"
 dependencies = ["mcp>=1.0.0"]
