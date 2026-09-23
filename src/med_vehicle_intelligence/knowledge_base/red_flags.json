@@ -25,7 +25,7 @@
       "id": "open_ended_authorization",
       "name": "Open-Ended Authorization",
       "severity": "high",
-      "pattern_keywords": ["won't know until", "get in there", "once we open it up", "can't give a firm", "no firm estimate", "authorize to start", "start tearing it apart", "won't know the cost", "open ended", "blank check"],
+      "pattern_keywords": ["won't know until", "get in there", "once we open it up", "can't give a firm", "no firm estimate", "authorize to start", "start tearing it apart", "won't know the cost", "open ended", "blank check", "refused to give me a written", "refused a written", "wouldn't give me a written", "won't give me a written", "no written estimate", "wouldn't put it in writing", "won't put it in writing", "refused to put it in writing", "nothing in writing"],
       "description": "The shop can't give a firm estimate and wants authorization to start work before knowing the full cost.",
       "why_problematic": "Once the car is disassembled, you can't easily take it somewhere else. The final bill tends to grow because you've already committed.",
       "what_to_do": "Ask for a diagnostic fee upfront ($80-150). A good shop will diagnose, give a firm written estimate, and let you decide. If they won't give a written estimate before starting work, find a shop that will."
@@ -43,7 +43,7 @@
       "id": "pressure_close",
       "name": "The Pressure Close",
       "severity": "high",
-      "pattern_keywords": ["wouldn't drive", "unsafe to drive", "could fail any time", "dangerous", "you need to do this today", "can't leave", "much bigger repair", "catastrophic", "ticking time bomb", "lawsuit", "liability"],
+      "pattern_keywords": ["wouldn't drive", "unsafe to drive", "could fail any time", "dangerous", "you need to do this today", "can't leave", "much bigger repair", "catastrophic", "ticking time bomb", "lawsuit", "liability", "cash only", "cash today", "today only", "demanded cash", "pay cash now"],
       "description": "Fear-based pressure to approve repairs immediately.",
       "why_problematic": "Genuine safety issues don't require high-pressure tactics. A mechanic who respects you will explain the problem, show you what they found, and let you decide.",
       "what_to_do": "If someone says the car is unsafe to drive, ask them to show you the problem. Get under the lift with them. Look at the worn part. If they can show it, it's probably real. If they can't or won't, it's probably a scare tactic."

@@ -109,3 +109,26 @@ def test_no_pressure_keyword_itself_still_counts():
     # Positive keywords that contain a negation word ("no pressure") are matched as keywords.
     result = find_red_flags("They told me there was no pressure and to think about it.")
     assert "Welcomed second opinion" in result
+
+
+# --- Chris ruling 2026-09-23: refusing a written estimate, and cash-only / today-only demands,
+# are (at least potential) red flags.
+
+def test_refused_written_estimate_is_a_red_flag():
+    result = find_red_flags("The shop refused to give me a written estimate for the brake job.")
+    assert "Open-Ended Authorization" in result
+    assert "LOOKS GOOD" not in result and "NEUTRAL" not in result
+
+
+def test_cash_today_only_is_pressure():
+    result = find_red_flags("They said the price is cash only and today only.")
+    assert "Pressure Close" in result
+
+
+def test_textbook_case_now_finds_both_flags():
+    result = find_red_flags(
+        "They said my car is unsafe to drive and refused to give me a written estimate, "
+        "then demanded cash today only."
+    )
+    assert "Pressure Close" in result and "Open-Ended Authorization" in result
+    assert "CONCERNS" in result
