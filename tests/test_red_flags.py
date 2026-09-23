@@ -79,3 +79,33 @@ def test_open_ended_auth():
         "authorize them to start tearing it apart."
     )
     assert "Open-Ended" in result or "Authorization" in result
+
+
+# --- Negated positives (2026-09-22). "refused to give me a written estimate" used to return
+# LOOKS GOOD with "Provided written estimate" as a positive signal.
+
+def test_refused_written_estimate_is_not_looks_good():
+    result = find_red_flags("The shop refused to give me a written estimate for the brake job.")
+    assert "LOOKS GOOD" not in result
+    assert "Provided written estimate" not in result
+
+
+def test_negated_positive_does_not_appear_next_to_red_flags():
+    result = find_red_flags(
+        "They said my car is unsafe to drive and refused to give me a written estimate, "
+        "then demanded cash today only."
+    )
+    assert "Pressure Close" in result
+    assert "Provided written estimate" not in result
+
+
+def test_affirmed_positive_after_an_unrelated_negation_still_counts():
+    # Negation in a PREVIOUS sentence must not cancel a positive in this one.
+    result = find_red_flags("I did not like the waiting room. They gave me a written estimate.")
+    assert "Provided written estimate" in result
+
+
+def test_no_pressure_keyword_itself_still_counts():
+    # Positive keywords that contain a negation word ("no pressure") are matched as keywords.
+    result = find_red_flags("They told me there was no pressure and to think about it.")
+    assert "Welcomed second opinion" in result

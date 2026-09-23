@@ -1,7 +1,30 @@
 """Tool: find_red_flags — Detect shop interaction warning signs."""
 
-from ..knowledge.loader import RED_FLAGS, SHOP_QUESTIONS
 from ..config import CTA_RED_FLAGS
+from ..knowledge.loader import RED_FLAGS, SHOP_QUESTIONS
+
+
+_NEGATIONS = (
+    "refused", "refuse", "refuses", "declined", "wouldn't", "would not", "won't", "will not",
+    "didn't", "did not", "don't", "do not", "doesn't", "does not", "never", "no ", "not ",
+    "without", "couldn't", "could not", "can't", "cannot", "wasn't", "weren't",
+)
+_NEGATION_WINDOW = 40  # characters before the keyword, roughly six words
+
+
+def _affirmed(text: str, keyword: str) -> bool:
+    """True if `keyword` occurs at least once WITHOUT a negation cue shortly before it
+    (in the same sentence)."""
+    start = 0
+    while True:
+        i = text.find(keyword, start)
+        if i < 0:
+            return False
+        window = text[max(0, i - _NEGATION_WINDOW):i]
+        window = window.rsplit(".", 1)[-1]  # stay inside the sentence
+        if not any(neg in window for neg in _NEGATIONS):
+            return True
+        start = i + len(keyword)
 
 
 def find_red_flags(description: str) -> str:
@@ -25,11 +48,13 @@ def find_red_flags(description: str) -> str:
                 matched_flags.append(flag)
                 break  # One match per flag is enough
 
-    # Check for positive signals
+    # Check for positive signals. A NEGATED positive is not a positive: measured 2026-09-22,
+    # "The shop refused to give me a written estimate" returned "Overall: LOOKS GOOD" with
+    # "Provided written estimate" listed as a positive signal.
     matched_positives = []
     for signal in positive_data:
         for keyword in signal["keywords"]:
-            if keyword in text:
+            if _affirmed(text, keyword):
                 matched_positives.append(signal["signal"])
                 break
 
@@ -86,12 +111,12 @@ def find_red_flags(description: str) -> str:
         for flag in matched_flags:
             severity_tag = " ⚠️" if flag["severity"] == "high" else ""
             lines.extend([
-                f"",
+                "",
                 f"**{flag['name']}**{severity_tag}",
                 f"{flag['description']}",
-                f"",
+                "",
                 f"*Why it's a problem:* {flag['why_problematic']}",
-                f"",
+                "",
                 f"*What to do:* {flag['what_to_do']}",
             ])
 
